@@ -1,0 +1,41 @@
+name: Fetch GitHub repos
+on:
+  schedule:
+    - cron: '0 0 * * *' # daily at 00:00 UTC
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Fetch repos
+        env:
+          GITHUB_USER: brayansoto-star
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          echo "Fetching repos for $GITHUB_USER"
+          curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/users/$GITHUB_USER/repos?sort=updated&per_page=100" \
+            | jq '[.[] | select(.fork==false) | {name: .name, description: .description, stargazers_count: .stargazers_count, language: .language, html_url: .html_url, homepage: .homepage}]' \
+            > data/repos.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/repos.json || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update data/repos.json"
+            git push
+          fi
