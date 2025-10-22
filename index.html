@@ -1,56 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Brayan Soto | Portfolio</title>
   <meta name="description" content="Brayan Soto — Software engineer portfolio. React, TypeScript, Python, AI, and web projects." />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji"}
-    .glass{backdrop-filter:saturate(140%) blur(10px); background:rgba(255,255,255,0.75)}
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;}
-    .skip-link:focus{position:static;width:auto;height:auto;left:0;padding:0.5rem;background:white;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,0.15);z-index:999}
+    /* Base font stack */
+    html, body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+
+    /* Dark page background and base text */
+    body {
+      background: #05060a;
+      color: #E6EEF8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+    }
+
+    /* Glass header */
+    .glass {
+      backdrop-filter: saturate(140%) blur(10px);
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Panels / cards */
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.03);
+      color: #E6EEF8;
+    }
+
+    header { color: #E6EEF8; }
+    a, .text-accent { color: #60A5FA; }
+    a:hover { color: #93C5FD; }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #0f1724;
+      color: #E6EEF8;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .btn-accent {
+      background-color: #0ea5a3;
+      color: #031014;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #E6EEF8;
+    }
+
+    /* Avatar ring and shadow for dark theme */
+    .avatar-ring {
+      box-shadow: 0 0 0 6px rgba(2,6,23,0.55), 0 10px 30px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    /* Projects grid card */
+    #projects-grid article {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      padding: 1.25rem;
+      border-radius: 1rem;
+      transition: box-shadow .15s ease, transform .12s ease;
+    }
+    #projects-grid article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    /* Small text tones */
+    .muted { color: rgba(230,238,248,0.72); }
+    .muted-2 { color: rgba(230,238,248,0.56); }
+
+    /* Footer */
+    footer { color: rgba(230,238,248,0.6); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0s !important; animation-duration: 0s !important; }
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-  <a class="skip-link" href="#main">Skip to content</a>
 
+<body class="antialiased">
   <!-- Header -->
-  <header class="sticky top-0 z-50 glass border-b border-slate-200/70">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <a href="#" class="font-extrabold tracking-tight text-xl">BrayanSoto<span class="text-sky-600">.</span></a>
-      <nav class="hidden md:flex gap-6 text-sm" role="navigation" aria-label="Primary">
-        <a class="hover:text-sky-600" href="#about">About</a>
-        <a class="hover:text-sky-600" href="#skills">Skills</a>
-        <a class="hover:text-sky-600" href="#projects">Projects</a>
-        <a class="hover:text-sky-600" href="#contact">Contact</a>
+  <header class="glass sticky top-0 z-50">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+      <a href="#" class="font-extrabold tracking-tight text-xl">BrayanSoto<span class="text-accent">.</span></a>
+
+      <nav class="hidden md:flex gap-6 text-sm muted" role="navigation" aria-label="Primary">
+        <a class="hover:text-accent" href="#about">About</a>
+        <a class="hover:text-accent" href="#skills">Skills</a>
+        <a class="hover:text-accent" href="#projects">Projects</a>
+        <a class="hover:text-accent" href="#contact">Contact</a>
       </nav>
-      <a href="https://github.com/brayansoto-star" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-3 py-1.5 text-white shadow hover:bg-sky-700 text-sm">GitHub</a>
+
+      <a href="https://github.com/brayansoto-star" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 btn-accent text-sm">GitHub</a>
     </div>
   </header>
 
   <main id="main" class="relative overflow-hidden">
     <!-- Hero -->
-    <section class="relative overflow-hidden">
-      <div class="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="text-sm uppercase tracking-wider text-sky-600 font-semibold">Hi, I am</p>
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-2">Brayan Soto
-            <span class="block text-slate-500 text-xl md:text-2xl font-semibold mt-2">Software Engineer • Frontend • AI</span>
-          </h1>
-          <p class="mt-6 text-slate-600 max-w-prose">Penn State Software Engineering student building clean, fast, and accessible web apps. I like React, Python, and AI-powered tooling. Based in Greater Chicago Area.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="#projects" class="rounded-xl bg-slate-900 text-white px-4 py-2 text-sm shadow hover:bg-slate-800">View Projects</a>
-            <a href="#contact" class="rounded-xl border border-slate-300 px-4 py-2 text-sm hover:bg-white">Contact</a>
-          </div>
+    <section class="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-sm uppercase tracking-wider text-accent font-semibold">Hi, I am</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-2">Brayan Soto
+          <span class="block muted text-xl md:text-2xl font-semibold mt-2">Software Engineer • Frontend • AI</span>
+        </h1>
+
+        <p class="mt-6 muted max-w-prose">Penn State Software Engineering student building clean, fast, and accessible web apps. I like React, Python, and AI-powered tooling. Based in Greater Chicago Area.</p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#projects" class="rounded-xl px-4 py-2 text-sm btn-primary">View Projects</a>
+          <a href="#contact" class="rounded-xl px-4 py-2 text-sm btn-ghost">Contact</a>
         </div>
-        <div class="relative">
-          <div class="aspect-square rounded-3xl bg-gradient-to-br from-sky-100 to-indigo-100 ring-1 ring-slate-200"></div>
-          <img alt="Brayan Soto — profile photo" src="https://github.com/brayansoto-star.png" class="w-40 h-40 rounded-2xl ring-2 ring-white shadow -mt-28 ml-8 object-cover"/>
+      </div>
+
+      <div class="relative flex justify-center">
+        <!-- decorative panel -->
+        <div class="rounded-3xl panel w-full h-[380px] md:h-[420px]"></div>
+
+        <!-- avatar (replace /assets/avatar.png with your uploaded path if different) -->
+        <div class="avatar-ring -mt-28 ml-8" style="width:96px;height:96px;position:absolute;bottom:24px;right:28px;border-radius:12px;">
+          <img alt="Profile image" src="/assets/avatar.png" style="width:96px;height:96px;display:block;object-fit:cover" />
         </div>
       </div>
     </section>
@@ -58,35 +140,36 @@
     <!-- About -->
     <section id="about" class="mx-auto max-w-6xl px-4 py-16">
       <h2 class="text-2xl font-extrabold">About</h2>
-      <p class="mt-4 text-slate-600 max-w-3xl">I design and ship small, focused projects that solve concrete problems. Recently I have worked on OCR pipelines for mortgage PDFs, a stats explorer for NBA data, and a C++ simulation for a FancyCar class. I enjoy clean UX, strong typing, and helpful documentation.</p>
+      <p class="mt-4 muted max-w-3xl">I design and ship small, focused projects that solve concrete problems. Recently I have worked on OCR pipelines for mortgage PDFs, a stats explorer for NBA data, and a C++ simulation for a FancyCar class. I enjoy clean UX, strong typing, and helpful documentation.</p>
+
       <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-        <li class="rounded-xl border bg-white p-3 shadow-sm">React</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">TypeScript</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">Python</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">C++</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">Tailwind CSS</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">PostgreSQL</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">FastAPI</li>
-        <li class="rounded-xl border bg-white p-3 shadow-sm">GitHub Actions</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">React</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">TypeScript</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">Python</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">C++</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">Tailwind CSS</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">PostgreSQL</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">FastAPI</li>
+        <li class="rounded-xl border panel p-3 shadow-sm">GitHub Actions</li>
       </ul>
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="bg-white border-y">
+    <section id="skills" class="bg-transparent border-y">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <h2 class="text-2xl font-extrabold">Skills</h2>
         <div class="mt-6 grid md:grid-cols-3 gap-6">
-          <div class="rounded-2xl border p-6 shadow-sm">
+          <div class="rounded-2xl border panel p-6 shadow-sm">
             <h3 class="font-bold">Frontend</h3>
-            <p class="text-sm text-slate-600 mt-2">React, Vite, Next.js, Tailwind, a11y, testing</p>
+            <p class="text-sm muted mt-2">React, Vite, Next.js, Tailwind, a11y, testing</p>
           </div>
-          <div class="rounded-2xl border p-6 shadow-sm">
+          <div class="rounded-2xl border panel p-6 shadow-sm">
             <h3 class="font-bold">Backend</h3>
-            <p class="text-sm text-slate-600 mt-2">Node, Express, FastAPI, auth, REST, caching</p>
+            <p class="text-sm muted mt-2">Node, Express, FastAPI, auth, REST, caching</p>
           </div>
-          <div class="rounded-2xl border p-6 shadow-sm">
+          <div class="rounded-2xl border panel p-6 shadow-sm">
             <h3 class="font-bold">Data and AI</h3>
-            <p class="text-sm text-slate-600 mt-2">Pandas, OCR, RAG, vector search, visualization</p>
+            <p class="text-sm muted mt-2">Pandas, OCR, RAG, vector search, visualization</p>
           </div>
         </div>
       </div>
@@ -96,22 +179,25 @@
     <section id="projects" class="mx-auto max-w-6xl px-4 py-16">
       <div class="flex items-end justify-between gap-4">
         <h2 class="text-2xl font-extrabold">Projects</h2>
-        <a href="https://github.com/brayansoto-star?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-sm text-sky-700 hover:underline">All repositories ↗</a>
+        <a href="https://github.com/brayansoto-star?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:underline">All repositories ↗</a>
       </div>
+
+      <!-- Grid populated by JS -->
       <div id="projects-grid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite"></div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="bg-white border-t">
+    <section id="contact" class="bg-transparent border-t">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <h2 class="text-2xl font-extrabold">Get in touch</h2>
-        <p class="mt-2 text-slate-600">Email me or use the form. Replace the action with your Formspree endpoint.</p>
+        <p class="mt-2 muted">Email me or use the form. Replace the action with your Formspree endpoint.</p>
+
         <form class="mt-6 grid md:grid-cols-2 gap-4" action="https://formspree.io/f/your-id" method="POST">
-          <input class="rounded-xl border p-3" type="text" name="name" placeholder="Your name" required>
-          <input class="rounded-xl border p-3" type="email" name="email" placeholder="Email" required>
-          <input class="rounded-xl border p-3 md:col-span-2" type="text" name="subject" placeholder="Subject" required>
-          <textarea class="rounded-xl border p-3 md:col-span-2" name="message" rows="5" placeholder="Message" required></textarea>
-          <button class="rounded-xl bg-sky-600 text-white px-4 py-2 text-sm shadow hover:bg-sky-700 md:col-span-2">Send</button>
+          <input class="rounded-xl border panel p-3" type="text" name="name" placeholder="Your name" required>
+          <input class="rounded-xl border panel p-3" type="email" name="email" placeholder="Email" required>
+          <input class="rounded-xl border panel p-3 md:col-span-2" type="text" name="subject" placeholder="Subject" required>
+          <textarea class="rounded-xl border panel p-3 md:col-span-2" name="message" rows="5" placeholder="Message" required></textarea>
+          <button class="rounded-xl btn-accent px-4 py-2 text-sm md:col-span-2">Send</button>
         </form>
       </div>
     </section>
@@ -119,21 +205,23 @@
 
   <!-- Footer -->
   <footer class="py-10">
-    <div class="mx-auto max-w-6xl px-4 text-sm text-slate-500">
+    <div class="mx-auto max-w-6xl px-4 text-sm muted-2">
       © <span id="year"></span> Brayan Soto. Built with Tailwind. Hosted on GitHub Pages.
     </div>
   </footer>
 
   <script>
-    // Repo loader: uses cached /data/repos.json if present, otherwise falls back to GitHub API
+    // Config: replace with your username/path if needed
     const GITHUB_USER = "brayansoto-star";
     const CACHED_REPOS_PATH = '/data/repos.json';
 
+    // Basic HTML escaper
     function escapeHtml(input){
       const str = String(input ?? '');
-      return str.replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#039;'}[s]));
+      return str.replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));
     }
 
+    // Ensure safe absolute URLs
     function sanitizeUrl(url){
       if(!url) return "";
       const trimmed = String(url).trim();
@@ -177,18 +265,18 @@
     async function loadProjects() {
       const grid = document.getElementById('projects-grid');
       if (!grid) return;
-      grid.innerHTML = `<div class="text-slate-600">Loading repositories…</div>`;
+      grid.innerHTML = `<div class="muted">Loading repositories…</div>`;
 
       const fromCache = await fetchCachedRepos();
       const repos = fromCache ?? await fetchGithubApiFallback();
 
       if (!repos) {
-        grid.innerHTML = `<div class="text-slate-600">Could not load repositories. Check your username or API rate limit.</div>`;
+        grid.innerHTML = `<div class="muted">Could not load repositories. Check your username or API rate limit.</div>`;
         return;
       }
 
       if (repos.length === 0) {
-        grid.innerHTML = `<div class="text-slate-600">No public repositories to show.</div>`;
+        grid.innerHTML = `<div class="muted">No public repositories to show.</div>`;
         return;
       }
 
@@ -203,16 +291,16 @@
       const repoUrl = sanitizeUrl(p.html_url || p.url || '');
       const homepage = sanitizeUrl(p.homepage || '');
       return `
-        <article class="rounded-2xl border bg-white p-5 shadow-sm hover:shadow transition">
+        <article>
           <h3 class="font-bold text-lg">${safeName}</h3>
-          <p class="mt-2 text-sm text-slate-600">${safeDesc}</p>
-          <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+          <p class="mt-2 muted">${safeDesc}</p>
+          <div class="mt-4 flex items-center justify-between text-xs muted-2">
             <span>${safeLang}</span>
             <span>★ ${stars}</span>
           </div>
           <div class="mt-4 flex gap-2">
-            <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="rounded-lg border px-3 py-1 text-sm">GitHub</a>
-            ${homepage ? `<a href="${homepage}" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-slate-900 text-white px-3 py-1 text-sm">Live</a>` : ""}
+            <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="rounded-lg border px-3 py-1 text-sm btn-ghost">GitHub</a>
+            ${homepage ? `<a href="${homepage}" target="_blank" rel="noopener noreferrer" class="rounded-lg px-3 py-1 text-sm btn-accent">Live</a>` : ""}
           </div>
         </article>`;
     }
